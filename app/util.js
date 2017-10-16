@@ -231,4 +231,15 @@ utils.hideNoneMatchingPage = (selector = '', el = document.documentElement) => {
   .reduce((acc, page) => page !== el ? (page.classList.add('hide'), acc.concat([page])) : acc, [])
 }
 
+/**
+ *@description removes is-active class to none matching 'el' pages and returns an array
+ * @param  {string} selector dom selector
+ * @param  {HTMLElement} el the page we want to keep active.
+ * @returns an array with pages that got the is-active class removed. This could be useful for testig porposes
+ */
+utils.removeIsActiveClass = (selector = '', el = document.documentElement) => {
+  return [...document.querySelectorAll(selector)]
+  .reduce((acc, page) => page !== el ? (page.classList.remove('is-active'), acc.concat([page])) : acc, [])
+}
+
 module.exports = utils

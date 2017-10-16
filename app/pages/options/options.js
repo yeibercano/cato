@@ -23,30 +23,21 @@ const aboutPageNavLink = document.querySelector("a[href^='#about']")
 //Tab routing for options page
 router.get('theming', function(request) {
   utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
-
-  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
-  .reduce((acc, navLink) => navLink != themePageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
+  utils.removeIsActiveClass("a[href^='#']", themePageNavLink)
   themePageNavLink.classList.add('is-active')
-
   appearancePageElement.classList.remove('hide')
 })
 
 router.get('usage', function (request) {
-  utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
-
-  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
-  .reduce((acc, navLink) => navLink != themePageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
+  utils.hideNoneMatchingPage("div[id^='page-']", usagePageElement)
+  utils.removeIsActiveClass("a[href^='#']", usagePageNavLink)
   usagePageNavLink.classList.add('is-active')
-
   usagePageElement.classList.remove('hide')
 })
 
 router.get('about', function (request) {
-  utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
-
-  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
-  .reduce((acc, navLink) => navLink != aboutPageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
+  utils.hideNoneMatchingPage("div[id^='page-']", aboutPageElement)
+  utils.removeIsActiveClass("a[href^='#']", aboutPageNavLink)
   aboutPageNavLink.classList.add('is-active')
-
   aboutPageElement.classList.remove('hide')
 })
