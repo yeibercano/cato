@@ -13,6 +13,8 @@ const appearancePageElement = document.querySelector('#page-theme')
 appearancePageElement.appendChild(staticCommandPaletteElement)
 appearancePageElement.appendChild(themeCustomizerElement)
 
+const {pageSelector, hrefSelector} = { pageSelector: "div[id^='page-']", hrefSelector: "a[href^='#']"}
+const {isActive, hide} = {hide: 'hide', isActive: 'is-active'}
 
 const [
   themePageNavLink,
@@ -31,22 +33,22 @@ const [
 
 //Tab routing for options page
 router.get('theming', function(request) {
-  utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
-  utils.removeIsActiveClass("a[href^='#']", themePageNavLink)
-  themePageNavLink.classList.add('is-active')
-  appearancePageElement.classList.remove('hide')
+  utils.hideNoneMatchingPage(pageSelector, appearancePageElement)
+  utils.removeIsActiveClass(hrefSelector, themePageNavLink)
+  themePageNavLink.classList.add(isActive)
+  appearancePageElement.classList.remove(hide)
 })
 
 router.get('usage', function (request) {
-  utils.hideNoneMatchingPage("div[id^='page-']", usagePageElement)
-  utils.removeIsActiveClass("a[href^='#']", usagePageNavLink)
-  usagePageNavLink.classList.add('is-active')
-  usagePageElement.classList.remove('hide')
+  utils.hideNoneMatchingPage(pageSelector, usagePageElement)
+  utils.removeIsActiveClass(hrefSelector, usagePageNavLink)
+  usagePageNavLink.classList.add(isActive)
+  usagePageElement.classList.remove(hide)
 })
 
 router.get('about', function (request) {
-  utils.hideNoneMatchingPage("div[id^='page-']", aboutPageElement)
-  utils.removeIsActiveClass("a[href^='#']", aboutPageNavLink)
-  aboutPageNavLink.classList.add('is-active')
-  aboutPageElement.classList.remove('hide')
+  utils.hideNoneMatchingPage(pageSelector, aboutPageElement)
+  utils.removeIsActiveClass(hrefSelector, aboutPageNavLink)
+  aboutPageNavLink.classList.add(isActive)
+  aboutPageElement.classList.remove(hide)
 })
