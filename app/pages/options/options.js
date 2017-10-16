@@ -22,8 +22,7 @@ const aboutPageNavLink = document.querySelector("a[href^='#about']")
 
 //Tab routing for options page
 router.get('theming', function(request) {
-  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']"))
-  .reduce((acc, page) => page !== appearancePageElement ? acc.concat([page.classList.add('hide')]) : acc, [])
+  utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
 
   const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
   .reduce((acc, navLink) => navLink != themePageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
@@ -33,8 +32,7 @@ router.get('theming', function(request) {
 })
 
 router.get('usage', function (request) {
-  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']"))
-  .reduce((acc, page) => page !== usagePageElement ? acc.concat([page.classList.add('hide')]) : acc, [])
+  utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
 
   const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
   .reduce((acc, navLink) => navLink != themePageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
@@ -44,8 +42,7 @@ router.get('usage', function (request) {
 })
 
 router.get('about', function (request) {
-  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']"))
-  .reduce((acc, page) => page !== aboutPageElement ? acc.concat([page.classList.add('hide')]) : acc, [])
+  utils.hideNoneMatchingPage("div[id^='page-']", appearancePageElement)
 
   const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
   .reduce((acc, navLink) => navLink != aboutPageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])

@@ -213,11 +213,22 @@ utils.copyToClipboard = function copyToClipboard(value, cb = function() {} ) {
   document.addEventListener('copy', (event) => {
     // Prevents the default behavior of copying, ex: pressing Ctrl+C
     // If we didn't prevent the prevent default, the clipboard would be filled with what ever the user had highlighted on the page.
-    event.preventDefault(); 
+    event.preventDefault();
     event.clipboardData.setData('text/plain', value);
     cb(event);
   }, { once: true })
-  document.execCommand('copy');  
+  document.execCommand('copy');
+}
+
+/**
+ *@description applies a .hide class to none matching 'el' pages and returns an array
+ * @param  {string} selector dom selector
+ * @param  {HTMLElement} el the page we want to keep visible.
+ * @returns an array with pages that got the .hide class applied. This could be useful for testig porposes
+ */
+utils.hideNoneMatchingPage = (selector = '', el = document.documentElement) => {
+  return [...document.querySelectorAll(selector)]
+  .reduce((acc, page) => page !== el ? (page.classList.add('hide'), acc.concat([page])) : acc, [])
 }
 
 module.exports = utils
