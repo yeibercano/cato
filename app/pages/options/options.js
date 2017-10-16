@@ -22,34 +22,33 @@ const aboutPageNavLink = document.querySelector("a[href^='#about']")
 
 //Tab routing for options page
 router.get('theming', function(request) {
-  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']")).filter((el) => el !== appearancePageElement)
-  otherPages.forEach((page) => page.classList.add('hide'))
+  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']"))
+  .reduce((acc, page) => page !== appearancePageElement ? acc.concat([page.classList.add('hide')]) : acc, [])
 
-  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']")).filter((el) => el != themePageNavLink)
-  otherNavLinks.forEach((navLink) => navLink.classList.remove('is-active'))
+  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
+  .reduce((acc, navLink) => navLink != themePageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
   themePageNavLink.classList.add('is-active')
 
   appearancePageElement.classList.remove('hide')
 })
 
 router.get('usage', function (request) {
-  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']")).filter((el) => el !== usagePageElement)
-  otherPages.forEach((page) => page.classList.add('hide'))
+  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']"))
+  .reduce((acc, page) => page !== usagePageElement ? acc.concat([page.classList.add('hide')]) : acc, [])
 
-  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']")).filter((el) => el != usagePageNavLink)
-  otherNavLinks.forEach((navLink) => navLink.classList.remove('is-active'))
+  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
+  .reduce((acc, navLink) => navLink != themePageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
   usagePageNavLink.classList.add('is-active')
-
 
   usagePageElement.classList.remove('hide')
 })
 
 router.get('about', function (request) {
-  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']")).filter((el) => el !== aboutPageElement)
-  otherPages.forEach((page) => page.classList.add('hide'))
+  const otherPages = Array.from(document.querySelectorAll("div[id^='page-']"))
+  .reduce((acc, page) => page !== aboutPageElement ? acc.concat([page.classList.add('hide')]) : acc, [])
 
-  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']")).filter((el) => el != aboutPageNavLink)
-  otherNavLinks.forEach((navLink) => navLink.classList.remove('is-active'))
+  const otherNavLinks = Array.from(document.querySelectorAll("a[href^='#']"))
+  .reduce((acc, navLink) => navLink != aboutPageNavLink ? acc.concat([navLink.classList.remove('is-active')]) : acc, [])
   aboutPageNavLink.classList.add('is-active')
 
   aboutPageElement.classList.remove('hide')
