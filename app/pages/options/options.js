@@ -14,11 +14,20 @@ appearancePageElement.appendChild(staticCommandPaletteElement)
 appearancePageElement.appendChild(themeCustomizerElement)
 
 
-const themePageNavLink = document.querySelector("a[href^='#theming']")
-const usagePageElement = document.querySelector("#page-usage")
-const usagePageNavLink = document.querySelector("a[href^='#usage']")
-const aboutPageElement = document.querySelector("#page-about")
-const aboutPageNavLink = document.querySelector("a[href^='#about']")
+const [
+  themePageNavLink,
+  usagePageElement,
+  usagePageNavLink,
+  aboutPageElement,
+  aboutPageNavLink
+] = utils.getSelectors(
+  "a[href^='#theming']",
+  "#page-usage",
+  "a[href^='#usage']",
+  "#page-about",
+  "a[href^='#about']"
+)
+
 
 //Tab routing for options page
 router.get('theming', function(request) {

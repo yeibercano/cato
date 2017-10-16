@@ -242,4 +242,11 @@ utils.removeIsActiveClass = (selector = '', el = document.documentElement) => {
   .reduce((acc, page) => page !== el ? (page.classList.remove('is-active'), acc.concat([page])) : acc, [])
 }
 
+/**
+ *@description
+ * @param  {selectors} multiple strings of selectors
+ * @returns an array of DOM elements base on selectors
+ */
+utils.getSelectors = (...selectors) => selectors.reduce((acc, el) => acc.concat([document.querySelector(el)]), [])
+
 module.exports = utils
