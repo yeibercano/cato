@@ -93,7 +93,7 @@ function rerenderSuggestions(event) {
     })
 
     let regex = new RegExp(`${domain  } `, 'i')
-    let query = window.searchInput.value.split(regex).filter((x) => x.length !== 0).join()
+    let query = window.searchInput.value.split(regex).filter((x) => Boolean(x.length)).join()
     window.userQuery = query
 
     const matches = utils.getMatches(query, window.currentSearchSuggestions)
@@ -107,7 +107,7 @@ function rerenderSuggestions(event) {
       utils.renderSuggestions(matches)
     }
 
-    else if (utils.displayPotentialMathResult(window.searchInput.value).length > 0) {
+    else if (Boolean(utils.displayPotentialMathResult(window.searchInput.value).length)) {
       utils.renderSuggestions(utils.displayPotentialMathResult(window.searchInput.value))
     }
 
