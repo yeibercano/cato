@@ -49,13 +49,9 @@ setupAppTheme()
  *
  * ['Find Bookmark ', 'Change Tab']
  */
-const searchScopes = []
-
-defaultSuggestions.forEach((plugin) => {
-  if(plugin.searchScope !== undefined) {
-    searchScopes.push(plugin.searchScope.toLowerCase())
-  }
-})
+const searchScopes = defaultSuggestions.reduce((acc, {searchScope} = {}) => {
+  return Boolean(searchScope) ? acc.concat([searchScope.toLowerCase()]) : acc
+}, [])
 
 /* ***********************Bootstrap app markup & set up globals**************************/
 window.appElement = document.createElement("div")
