@@ -13,7 +13,7 @@ const appearancePageElement = document.querySelector('#page-theme')
 appearancePageElement.appendChild(staticCommandPaletteElement)
 appearancePageElement.appendChild(themeCustomizerElement)
 
-const {pageSelector, hrefSelector} = { pageSelector: "div[id^='page-']", hrefSelector: "a[href^='#']"}
+const {pageSelector, hrefSelector} = {pageSelector: "div[id^='page-']", hrefSelector: "a[href^='#']"}
 const {isActive, hide} = {hide: 'hide', isActive: 'is-active'}
 
 const [
