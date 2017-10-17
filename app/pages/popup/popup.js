@@ -71,11 +71,11 @@ function rerenderSuggestions(event) {
   }
 
 
-  let domain = searchScopes.filter((searchScope) => {
+  let [domain] = searchScopes.filter((searchScope) => {
     if (window.searchInput.value.toLowerCase().includes(searchScope)) {
       return searchScope
     }
-  })[0]
+  })
 
 
 
