@@ -87,7 +87,7 @@ function rerenderSuggestions(event) {
     //find the plugin to execute based off the domain.
     let x = defaultSuggestions.filter((plugin) => {
       let regex = new RegExp(domain, 'i')
-      if(plugin.searchScope != undefined){
+      if (Boolean(plugin.searchScope)) {
         return plugin.searchScope.match(regex)
       }
     })
@@ -103,11 +103,11 @@ function rerenderSuggestions(event) {
   else {
     let matches = utils.getMatches(window.searchInput.value, window.currentSearchSuggestions)
 
-    if(matches.length > 0) {
+    if (Boolean(matches.length)) {
       utils.renderSuggestions(matches)
     }
 
-    else if(utils.displayPotentialMathResult(window.searchInput.value).length > 0){
+    else if (utils.displayPotentialMathResult(window.searchInput.value).length > 0) {
       utils.renderSuggestions(utils.displayPotentialMathResult(window.searchInput.value))
     }
 
@@ -138,7 +138,7 @@ function handleArrowKeysOnInput(event) {
     if(key.DOWN || key.TAB) {
       // prevent focus on search input so we can keep tabbing down our suggestions while still being able to type
       event.preventDefault()
-      if (selectedElement.nextElementSibling !== null) {
+      if (Boolean(selectedElement.nextElementSibling)) {
         selectedElement.classList.remove('selected')
         selectedElement = selectedElement.nextElementSibling
         selectedElement.classList.add('selected')
@@ -152,7 +152,7 @@ function handleArrowKeysOnInput(event) {
       }
     }
     else if(key.UP) {
-      if (selectedElement.previousElementSibling !== null) {
+      if (Boolean(selectedElement.previousElementSibling)) {
         selectedElement.classList.remove('selected')
         selectedElement = selectedElement.previousElementSibling
         selectedElement.classList.add('selected')
